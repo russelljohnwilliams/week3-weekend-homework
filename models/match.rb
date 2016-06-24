@@ -3,7 +3,7 @@ require_relative('team')
 
 class Match
 
-  attr_reader(:id, :team_id, :home_team_score, :away_team_score)
+  attr_reader(:id, :team_id, :home_team_id, :away_team_id, :home_team_score, :away_team_score)
 
   def initialize (options, runner)
     @id = options['id'].to_i
@@ -39,6 +39,13 @@ class Match
     result = Match.map_items(sql, runner)
     return result.first
   end
+
+  # def list_matches_by_team_id()
+  #   sql = "SELECT * FROM matches INNER JOIN teams ON matches.home_team_id = teams.id OR matches.away_team_id = teams.id WHERE teams.id = #{@id}"
+  #   return Team.map_item(sql, @runner)
+  # end
+
+
 
 end
 
