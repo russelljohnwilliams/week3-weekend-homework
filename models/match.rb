@@ -3,8 +3,7 @@ require_relative('team')
 
 class Match
 
-  attr_reader(:id, :home_team_score, :away_team_score)
-
+  attr_reader(:id, :team_id, :home_team_score, :away_team_score)
 
   def initialize (options, runner)
     @id = options['id'].to_i
@@ -16,17 +15,7 @@ class Match
   end
 
   def save()
-    sql = "INSERT INTO matches (
-    home_team_id,
-    away_team_id, 
-    home_team_score, 
-    away_team_score
-    ) VALUES (
-    '#{@home_team_id}',
-    '#{@away_team_id}',
-    '#{@home_team_score}',
-    '#{@away_team_score}'
-    ) RETURNING *"
+    sql = "INSERT INTO matches (home_team_id, away_team_id, home_team_score, away_team_score) VALUES ('#{@home_team_id}', '#{@away_team_id}', '#{@home_team_score}', '#{@away_team_score}') RETURNING *"
     match = @runner.run(sql).first
     return Match.new(match, @runner)
   end
@@ -35,20 +24,6 @@ class Match
     sql = "DELETE FROM matches"
     runner.run(sql)
   end
-
-  # def save()
-  #   sql = "INSERT INTO matches (home_team_id, 
-  #   away_team_id, 
-  #   home_team_score, 
-  #   away_team_score) VALUES (
-  #   '#{@home_team_id}', 
-  #   '#{@away_team_id}', 
-  #   '#{@home_team_score}', 
-  #   '#{@away_team_score}') RETURNING *"
-  #   match = @runner.run( sql ).first
-  #   return Match.new(match, @runner)
-  # end
-
 
 
 end
