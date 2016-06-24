@@ -16,7 +16,7 @@ team3 = Team.new({"name" => "Diddly Dodge"}, runner).save
 
 team4 = Team.new({"name" => "Dodgeball Dandies"}, runner).save
 
-match1 = Match.new({"team_id" => team1.id, "team_id" => team2.id, "home_team_score" => 3, "away_team_score" => 7}, runner).save
+match1 = Match.new({"home_team_id" => team1.id, "away_team_id" => team2.id, "home_team_score" => 3, "away_team_score" => 7}, runner).save
 
 
 binding.pry
