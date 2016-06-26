@@ -17,8 +17,3 @@ CREATE TABLE matches (
   away_team_score INT2
 );
 
--- CREATE TABLE played_matches (
---   id SERIAL primary key,
---   team_id INT4 reference teams(id)
---   match_id INT4 reference matches(id)
--- );

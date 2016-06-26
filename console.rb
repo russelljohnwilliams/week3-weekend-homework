@@ -28,7 +28,7 @@ match5 = Match.new({"home_team_id" => team2.id, "away_team_id" => team4.id, "hom
 
 match6 = Match.new({"home_team_id" => team1.id, "away_team_id" => team3.id, "home_team_score" => 11, "away_team_score" => 2}, runner).save
 
-team1.scores()
+match1.show_all_scores()
 
 binding.pry
 nil

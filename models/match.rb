@@ -41,18 +41,12 @@ class Match
   end
 
 
-  def scores()
-    sql "SELECT home.name, matches.home_team_score, matches.away_team_score, away.name FROM matches INNER JOIN teams home ON matches.home_team_id = home.id INNER JOIN teams away ON matches.away_team_id = away.id;"
-      matches = Pokemon.map_items(sql, @runner)
-      print matches
+  def show_all_scores()
+    sql = "SELECT home.name as home_team_name, matches.home_team_score, matches.away_team_score, away.name as away_team_name FROM matches INNER JOIN teams home ON matches.home_team_id = home.id INNER JOIN teams away ON matches.away_team_id = away.id;"
+      matches = @runner.run(sql)
+      result =  matches.map {|match| match }
+      print result
     end
-
-  # def list_matches_by_team_id()
-  #   sql = "SELECT * FROM matches INNER JOIN teams ON matches.home_team_id = teams.id OR matches.away_team_id = teams.id WHERE teams.id = #{@id}"
-  #   return Team.map_item(sql, @runner)
-  # end
-
-# SELECT teams.names, matches.away_score, matches.home_score FROM teams  INNER JOIN matches ON matches.home_team_id = teams.id AND matches.away_team_id = teams.id;
 
 
 end
