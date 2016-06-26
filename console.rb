@@ -28,20 +28,10 @@ match5 = Match.new({"home_team_id" => team2.id, "away_team_id" => team4.id, "hom
 
 match6 = Match.new({"home_team_id" => team1.id, "away_team_id" => team3.id, "home_team_score" => 11, "away_team_score" => 2}, runner).save
 
-# team2.list_matches_by_team_id()
+team1.scores()
 
 binding.pry
 nil
 
 
-#shows all info from a home or away game for team with id 2 
 
-# SELECT * FROM matches INNER JOIN teams ON matches.home_team_id = teams.id OR matches.away_team_id = teams.id WHERE teams.id = #{@id};
-
-# shows all info from a home game for team with id ???
-
-# "SELECT * FROM matches INNER JOIN teams ON matches.home_team_id = teams.id WHERE matches.home_team_id = 1;""
-
-
-
-# SELECT teams.name, matches.home_team_score FROM matches INNER JOIN teams ON matches.home_team_id = teams.id OR matches.away_team_id = teams.id WHERE teams.id = #{@id};
